@@ -90,7 +90,7 @@ GET '/categories'
 ```
 
 ## Endpoints
-'''
+```
 GET '/categories'
 -Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
 - Request Arguments: None
@@ -273,7 +273,7 @@ questions": [
     "question": "What is the heaviest organ in the human body?"
   }
  
- '''
+ ```
  
    
   
