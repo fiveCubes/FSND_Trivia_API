@@ -177,10 +177,10 @@ def create_app(test_config=None):
 
   @app.route('/quizzes', methods=['POST'])
   def create_quizzes():
-     data = request.get_json()
-     previous_questions = data['previous_questions']
-     quiz_category = data['quiz_category']['id']
-     try:
+    try:
+      data = request.get_json()
+      previous_questions = data['previous_questions']
+      quiz_category = data['quiz_category']['id']
       if(quiz_category ==0):
         questions=Question.query.filter(Question.id.notin_(previous_questions)).all()
       else:
@@ -190,8 +190,8 @@ def create_app(test_config=None):
       return jsonify({
         'previous_questions':previous_questions,
         'question':formatted_questions[0]})
-     except Exception as e:
-        abort(500)
+    except Exception as e:
+         abort(400)
            
      
   
@@ -210,14 +210,6 @@ def create_app(test_config=None):
 
     }),404
 
-  @app.errorhandler(500)
-  def internal_server_error(error):
-    return jsonify({
-      "success":False,
-       "error":500,
-       "message":"internal server error"
-
-    }),500
 
   @app.errorhandler(405)
   def method_not_allowed(error):
