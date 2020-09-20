@@ -228,7 +228,7 @@ def create_app(test_config=None):
        "error":400,
        "message":"Bad request"
 
-    }),400
+    }),200
 
   
   return app
